@@ -1,11 +1,9 @@
 import './App.css'
-
+import Report from './components/Report'
 
 function App() {
   return (
-    <h1>
-      Hello World
-    </h1>
+    <Report />
   )
 }
 
