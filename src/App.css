@@ -3,9 +3,21 @@
   /* margin: 0 auto;
   padding: 2rem; */
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .report-specifics-container {
   margin-left: 15%;
   text-align: left;
+}
+
+.heading {
+  /* color: blueviolet; */
+  font-size: 1.4rem;
+  padding-bottom: .85rem;
+}
+
+.subheading {
+    font-size: 1.6rem;
+  font-weight: bold;
 }

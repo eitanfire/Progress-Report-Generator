@@ -6,8 +6,8 @@ const Report: React.FC = () => {
     <Container fluid>
       <Row className="mb-3">
         <Col>
-          <h1>MID-SEMESTER STUDENT EVALUATION</h1>
-          <h2>PROGRESS REPORT</h2>
+          <h1 className="heading">MID-SEMESTER STUDENT EVALUATION</h1>
+          <h2 className="subheading">PROGRESS REPORT</h2>
         </Col>
       </Row>
       <div className="report-specifics-container">
@@ -24,7 +24,7 @@ const Report: React.FC = () => {
             <strong>Instructor:</strong>
           </Col>
           <Col sm="6">
-            <strong>Semester:</strong>
+            <strong>Semester: 1</strong>
           </Col>
         </Row>
         <Row className="mb-2">
