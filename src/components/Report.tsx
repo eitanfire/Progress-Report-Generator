@@ -1,8 +1,5 @@
-type Report = { string }
-
 const Report = () => {
-    return
-    <h1>Hello World</h1>;
-}
+  return <div>hello</div>;
+};
 
 export default Report;
