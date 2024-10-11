@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "reactstrap";
+import gradesData from '../grades.json';
+
+interface Student {
+  lastName: string;
+  firstName: string;
+  email: string;
+  overallGrade: string | null;
+}
 
 const Report: React.FC = () => {
+  const [students, setStudents] = useState<Student[]>([]);
+  const [currentStudent, setCurrentStudent] = useState<Student | null>(null);
+
+  useEffect(() => {
+    setStudents(gradesData.students);
+    if (gradesData.students.length > 0) {
+      setCurrentStudent(gradesData.students[0]);
+    }
+  }, []);
+
   return (
     <Container fluid>
       <Row className="mb-3">
@@ -13,15 +31,18 @@ const Report: React.FC = () => {
       <div className="report-specifics-container">
         <Row className="mb-2">
           <Col sm="6">
-            <strong>Student:</strong>
+            <strong>Student:</strong>{" "}
+            {currentStudent
+              ? `${currentStudent.firstName} ${currentStudent.lastName}`
+              : ""}
           </Col>
           <Col sm="6">
-            <strong>Date:</strong>
+            <strong>Date:</strong> {new Date().toLocaleDateString()}
           </Col>
         </Row>
         <Row className="mb-2">
           <Col sm="6">
-            <strong>Instructor:</strong>
+            <strong>Instructor: Eitan Fire</strong>
           </Col>
           <Col sm="6">
             <strong>Semester: 1</strong>
@@ -42,7 +63,8 @@ const Report: React.FC = () => {
         </Row>
         <Row className="mb-2">
           <Col sm="6">
-            <strong>GRADE IN PROGRESS:</strong>
+            <strong>GRADE IN PROGRESS:</strong>{" "}
+            {currentStudent ? currentStudent.overallGrade : ""}
           </Col>
           <Col sm="6">
             <strong>CREDITS POSSIBLE:</strong>
@@ -56,6 +78,23 @@ const Report: React.FC = () => {
           </Col>
         </Row>
       </div>
+      <Row className="mt-4">
+        <Col>
+          <h3>All Students:</h3>
+          <ul>
+            {students.map((student, index) => (
+              <li
+                key={index}
+                onClick={() => setCurrentStudent(student)}
+                style={{ cursor: "pointer" }}
+              >
+                {student.firstName} {student.lastName} -{" "}
+                {student.overallGrade || "N/A"}
+              </li>
+            ))}
+          </ul>
+        </Col>
+      </Row>
     </Container>
   );
 };
