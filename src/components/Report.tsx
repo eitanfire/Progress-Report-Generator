@@ -65,10 +65,10 @@ const Report: React.FC = () => {
           </Row>
           <Row className="mb-2">
             <Col sm="6">
-              <strong>Instructor:</strong>
+              <strong>Instructor:</strong> Eitan Fire
             </Col>
             <Col sm="6">
-              <strong>Semester: 1</strong>
+              <strong>Semester:</strong> 1
             </Col>
           </Row>
           <Row className="mb-2">
