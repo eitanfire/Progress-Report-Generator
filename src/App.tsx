@@ -1,10 +1,9 @@
 import './App.css'
-import Report from './components/Report'
+import "bootstrap/dist/css/bootstrap.min.css";
+import Report from "./components/Report";
 
 function App() {
-  return (
-    <Report />
-  )
+  return <Report />;
 }
 
-export default App
+export default App;
