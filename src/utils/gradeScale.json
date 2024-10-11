@@ -1,0 +1,17 @@
+{
+  "gradeScale": [
+    { "letter": "A+", "minPercentage": 98 },
+    { "letter": "A", "minPercentage": 92 },
+    { "letter": "A-", "minPercentage": 90 },
+    { "letter": "B+", "minPercentage": 88 },
+    { "letter": "B", "minPercentage": 82 },
+    { "letter": "B-", "minPercentage": 80 },
+    { "letter": "C+", "minPercentage": 78 },
+    { "letter": "C", "minPercentage": 72 },
+    { "letter": "C-", "minPercentage": 70 },
+    { "letter": "D+", "minPercentage": 68 },
+    { "letter": "D", "minPercentage": 62 },
+    { "letter": "D-", "minPercentage": 60 },
+    { "letter": "F", "minPercentage": 0 }
+  ]
+}
