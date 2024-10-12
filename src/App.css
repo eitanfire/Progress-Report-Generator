@@ -21,6 +21,7 @@
   top:0rem;
   left: 0rem;
   width: 85rem;
+  z-index: -1;
 }
 
 .heading {
