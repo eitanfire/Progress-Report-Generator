@@ -11,13 +11,24 @@
   text-align: left;
 }
 
+.logo {
+  position: absolute;
+
+  /* max-width:5rem; */
+  /* max-block-size: 18%; */
+
+  /* background-color: aquamarine; */
+  top:0rem;
+  left: 0rem;
+  width: 120%;
+}
+
 .heading {
-  /* color: blueviolet; */
-  font-size: 1.4rem;
-  padding-bottom: .85rem;
+padding-top: 10%;  font-size: 1.4rem;
+  padding-bottom: 0.85rem;
 }
 
 .subheading {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
   font-weight: bold;
 }

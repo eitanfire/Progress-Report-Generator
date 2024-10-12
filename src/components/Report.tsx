@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "reactstrap";
 import gradesData from "../grades.json";
 import gradeScaleData from "../utils/gradeScale.json";
+// import Logo from "../assets/unnamed.jpg";
+import Logo from "../assets/sept-school-logo.png";
 
 interface Student {
   lastName: string;
@@ -45,8 +47,11 @@ const Report: React.FC = () => {
     return "F"; // Default to F if no other grade matches
   };
 
+  console.log("Logo import:", Logo);
+
   return (
     <Container fluid>
+        <img className="logo" src={Logo} alt="Logo" />
       <Row className="mb-3">
         <Col>
           <h1 className="heading">MID-SEMESTER STUDENT EVALUATION</h1>
@@ -87,8 +92,8 @@ const Report: React.FC = () => {
           <Row className="mb-2">
             <Col sm="6">
               <strong>GRADE IN PROGRESS:</strong>{" "}
-              {formatGrade(student.overallGrade)} (
-              {getLetterGrade(student.overallGrade)})
+              {getLetterGrade(student.overallGrade)}(
+              {formatGrade(student.overallGrade)})
             </Col>
             <Col sm="6">
               <strong>CREDITS POSSIBLE:</strong>
