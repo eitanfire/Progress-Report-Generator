@@ -4,7 +4,8 @@ import gradesData from "../grades.json";
 import gradeScaleData from "../utils/gradeScale.json";
 import attendanceData from "../utils/attendance.json";
 import Logo from "../assets/sept-school-logo.png";
-import { calculateCredits } from "../utils/creditCalculator"; // Import your utility
+import { calculateCredits } from "../utils/creditCalculator";
+import { rateAttendance, AttendanceRecord } from "../utils/attendanceRating";
 
 interface Student {
   lastName: string;
@@ -17,12 +18,6 @@ interface Student {
 interface GradeScale {
   letter: string;
   minPercentage: number;
-}
-
-interface AttendanceRecord {
-  name: string;
-  absences: number;
-  lates: number;
 }
 
 const Report: React.FC = () => {
@@ -45,7 +40,6 @@ const Report: React.FC = () => {
       })
     );
 
-    // Merge attendance data with student data
     const studentsWithAttendance = processedStudents.map((student) => {
       const attendanceRecord = processedAttendance.find(
         (record) =>
@@ -73,6 +67,22 @@ const Report: React.FC = () => {
     return "F"; // Default to F if no other grade matches
   };
 
+  const renderAttendanceRatingBoxes = (rating: string) => {
+    const categories = ["Excellent", "Good", "Fair", "Poor"];
+    return (
+      <Row className="attendance-rating-row mb-3">
+        {categories.map((category) => (
+          <Col key={category} className="text-center attendance-box">
+            <strong>{category}</strong>
+            <div className="attendance-box-content">
+              {rating === category ? "X" : ""}
+            </div>
+          </Col>
+        ))}
+      </Row>
+    );
+  };
+
   return (
     <Container fluid>
       <img className="logo" src={Logo} alt="Logo" />
@@ -83,10 +93,13 @@ const Report: React.FC = () => {
         </Col>
       </Row>
       {students.map((student, index) => {
-        // Calculate the student's credits based on their attendance
         const credits = student.attendance
           ? calculateCredits(student.attendance)
-          : 4; // Default to 4 if no attendance record is available
+          : 4;
+
+        const attendanceRating = student.attendance
+          ? rateAttendance(student.attendance)
+          : "No attendance data";
 
         return (
           <div key={index} className="report-specifics-container mb-5">
@@ -106,14 +119,17 @@ const Report: React.FC = () => {
                 <strong>Semester:</strong> 1
               </Col>
             </Row>
-            <Row className="mb-2">
+            <Row className="class-attendance-box mb-2">
               <Col>
-                <strong>COURSE and DESCRIPTION:</strong>
+                <strong>Class Attendance:</strong>
               </Col>
+              <Col className="col-7">
+                {renderAttendanceRatingBoxes(attendanceRating)}
+              </Col>
+              {/* Wider box labeled Class Attendance */}
             </Row>
-            <Row className="mb-2">
-              <Col>{/* {course.description} */}</Col>
-            </Row>
+
+            {/* Attendance specifics (Absences and Lates) */}
             <Row className="mb-2">
               <Col>
                 <strong>ATTENDANCE:</strong>
@@ -129,6 +145,7 @@ const Report: React.FC = () => {
                 )}
               </Col>
             </Row>
+
             <Row className="mb-2">
               <Col sm="6">
                 <strong>GRADE IN PROGRESS:</strong>{" "}
