@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "reactstrap";
 import gradesData from "../grades.json";
 import gradeScaleData from "../utils/gradeScale.json";
-// import Logo from "../assets/unnamed.jpg";
+import attendanceData from "../utils/attendance.json";
 import Logo from "../assets/sept-school-logo.png";
 
 interface Student {
@@ -10,11 +10,18 @@ interface Student {
   firstName: string;
   email: string;
   overallGrade: number | null;
+  attendance?: AttendanceRecord;
 }
 
 interface GradeScale {
   letter: string;
   minPercentage: number;
+}
+
+interface AttendanceRecord {
+  name: string;
+  absences: number;
+  lates: number;
 }
 
 const Report: React.FC = () => {
@@ -28,7 +35,25 @@ const Report: React.FC = () => {
         ? parseFloat(student.overallGrade)
         : null,
     }));
-    setStudents(processedStudents);
+
+    const processedAttendance = attendanceData.studentAttendance.map(
+      (student) => ({
+        name: student.name,
+        absences: student.attendance[6], // Index 6 corresponds to 'A' (Absences)
+        lates: student.attendance[3] + student.attendance[4], // Indices 3 and 4 correspond to 'L' and 'LE' (Lates)
+      })
+    );
+
+    // Merge attendance data with student data
+    const studentsWithAttendance = processedStudents.map((student) => {
+      const attendanceRecord = processedAttendance.find(
+        (record) =>
+          record.name.toLowerCase() === student.firstName.toLowerCase()
+      );
+      return { ...student, attendance: attendanceRecord };
+    });
+
+    setStudents(studentsWithAttendance);
     setGradeScale(gradeScaleData.gradeScale);
   }, []);
 
@@ -47,11 +72,9 @@ const Report: React.FC = () => {
     return "F"; // Default to F if no other grade matches
   };
 
-  console.log("Logo import:", Logo);
-
   return (
     <Container fluid>
-        <img className="logo" src={Logo} alt="Logo" />
+      <img className="logo" src={Logo} alt="Logo" />
       <Row className="mb-3">
         <Col>
           <h1 className="heading">MID-SEMESTER STUDENT EVALUATION</h1>
@@ -87,6 +110,16 @@ const Report: React.FC = () => {
           <Row className="mb-2">
             <Col>
               <strong>ATTENDANCE:</strong>
+              {student.attendance ? (
+                <>
+                  <br />
+                  Absences: {student.attendance.absences}
+                  <br />
+                  Lates: {student.attendance.lates}
+                </>
+              ) : (
+                <span> No attendance data available</span>
+              )}
             </Col>
           </Row>
           <Row className="mb-2">
