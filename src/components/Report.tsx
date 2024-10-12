@@ -4,6 +4,7 @@ import gradesData from "../grades.json";
 import gradeScaleData from "../utils/gradeScale.json";
 import attendanceData from "../utils/attendance.json";
 import Logo from "../assets/sept-school-logo.png";
+import { calculateCredits } from "../utils/creditCalculator"; // Import your utility
 
 interface Student {
   lastName: string;
@@ -81,66 +82,78 @@ const Report: React.FC = () => {
           <h2 className="subheading">PROGRESS REPORT</h2>
         </Col>
       </Row>
-      {students.map((student, index) => (
-        <div key={index} className="report-specifics-container mb-5">
-          <Row className="mb-2">
-            <Col sm="6">
-              <strong>Student:</strong> {student.firstName} {student.lastName}
-            </Col>
-            <Col sm="6">
-              <strong>Date:</strong> {new Date().toLocaleDateString()}
-            </Col>
-          </Row>
-          <Row className="mb-2">
-            <Col sm="6">
-              <strong>Instructor:</strong> Eitan Fire
-            </Col>
-            <Col sm="6">
-              <strong>Semester:</strong> 1
-            </Col>
-          </Row>
-          <Row className="mb-2">
-            <Col>
-              <strong>COURSE and DESCRIPTION:</strong>
-            </Col>
-          </Row>
-          <Row className="mb-2">
-            <Col>{/* {course.description} */}</Col>
-          </Row>
-          <Row className="mb-2">
-            <Col>
-              <strong>ATTENDANCE:</strong>
-              {student.attendance ? (
-                <>
-                  <br />
-                  Absences: {student.attendance.absences}
-                  <br />
-                  Lates: {student.attendance.lates}
-                </>
-              ) : (
-                <span> No attendance data available</span>
-              )}
-            </Col>
-          </Row>
-          <Row className="mb-2">
-            <Col sm="6">
-              <strong>GRADE IN PROGRESS:</strong>{" "}
-              {getLetterGrade(student.overallGrade)}(
-              {formatGrade(student.overallGrade)})
-            </Col>
-            <Col sm="6">
-              <strong>CREDITS POSSIBLE:</strong>
-              <br />
-              (please note if reduced due to attendance, etc.)
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <strong>COMMENTS:</strong>
-            </Col>
-          </Row>
-        </div>
-      ))}
+      {students.map((student, index) => {
+        // Calculate the student's credits based on their attendance
+        const credits = student.attendance
+          ? calculateCredits(student.attendance)
+          : 4; // Default to 4 if no attendance record is available
+
+        return (
+          <div key={index} className="report-specifics-container mb-5">
+            <Row className="mb-2">
+              <Col sm="6">
+                <strong>Student:</strong> {student.firstName} {student.lastName}
+              </Col>
+              <Col sm="6">
+                <strong>Date:</strong> {new Date().toLocaleDateString()}
+              </Col>
+            </Row>
+            <Row className="mb-2">
+              <Col sm="6">
+                <strong>Instructor:</strong> Eitan Fire
+              </Col>
+              <Col sm="6">
+                <strong>Semester:</strong> 1
+              </Col>
+            </Row>
+            <Row className="mb-2">
+              <Col>
+                <strong>COURSE and DESCRIPTION:</strong>
+              </Col>
+            </Row>
+            <Row className="mb-2">
+              <Col>{/* {course.description} */}</Col>
+            </Row>
+            <Row className="mb-2">
+              <Col>
+                <strong>ATTENDANCE:</strong>
+                {student.attendance ? (
+                  <>
+                    <br />
+                    Absences: {student.attendance.absences}
+                    <br />
+                    Lates: {student.attendance.lates}
+                  </>
+                ) : (
+                  <span> No attendance data available</span>
+                )}
+              </Col>
+            </Row>
+            <Row className="mb-2">
+              <Col sm="6">
+                <strong>GRADE IN PROGRESS:</strong>{" "}
+                {getLetterGrade(student.overallGrade)}(
+                {formatGrade(student.overallGrade)})
+              </Col>
+              <Col sm="6">
+                <strong>CREDITS POSSIBLE:</strong>
+                <br />
+                {credits}
+                {credits < 4 && (
+                  <div className="text-danger">
+                    Lost credit due to attendance.
+                  </div>
+                )}
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <strong>COMMENTS:</strong>
+              </Col>
+            </Row>
+          </div>
+        );
+      })}
     </Container>
   );
 };
