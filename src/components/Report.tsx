@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import gradesData from "../grades.json";
 import gradeScaleData from "../utils/gradeScale.json";
 import attendanceData from "../utils/attendance.json";
-import Logo from "../assets/sept-school-logo.png";
+import Logo from "../assets/unnamed.jpg";
 import { calculateCredits } from "../utils/creditCalculator";
 import { rateAttendance, AttendanceRecord } from "../utils/attendanceRating";
+import courseDescriptions from "../utils/courseDescriptions";
 import "../Report.css";
 
 interface Student {
@@ -13,6 +14,15 @@ interface Student {
   email: string;
   overallGrade: number | null;
   attendance?: AttendanceRecord;
+  courseName: string;
+}
+
+interface RawStudent {
+  lastName: string;
+  firstName: string;
+  email: string;
+  overallGrade: string | null;
+  courseName?: string;
 }
 
 interface GradeScale {
@@ -26,34 +36,49 @@ const Report: React.FC = () => {
 
   useEffect(() => {
     // Process students and attendance data
-    const processedStudents = gradesData.students.map((student) => ({
+    const processedStudents: Student[] = (
+      gradesData.students as RawStudent[]
+    ).map((student) => ({
       ...student,
       overallGrade: student.overallGrade
         ? parseFloat(student.overallGrade)
         : null,
+      courseName:
+        student.courseName || attendanceData.courseName || "Unknown Course",
     }));
 
     const processedAttendance = attendanceData.studentAttendance.map(
       (student) => ({
         name: student.name,
-        absences: student.attendance[6], // Assuming index 6 corresponds to 'A' (Absences)
-        lates: student.attendance[3] + student.attendance[4], // Assuming indices 3 and 4 correspond to 'L' and 'LE' (Lates)
+        absences:
+          student.attendance[attendanceData.attendanceCategories.indexOf("A")],
+        lates:
+          student.attendance[attendanceData.attendanceCategories.indexOf("L")] +
+          student.attendance[attendanceData.attendanceCategories.indexOf("LE")],
       })
     );
 
-    // Combine attendance data with students
-    const studentsWithAttendance = processedStudents.map((student) => {
-      const attendanceRecord = processedAttendance.find(
-        (record) =>
-          record.name.toLowerCase() === student.firstName.toLowerCase()
-      );
-      return { ...student, attendance: attendanceRecord };
-    });
+    const studentsWithAttendance: Student[] = processedStudents.map(
+      (student) => {
+        const attendanceRecord = processedAttendance.find(
+          (record) =>
+            record.name.toLowerCase() === student.firstName.toLowerCase()
+        );
+        return {
+          ...student,
+          attendance: attendanceRecord
+            ? {
+                absences: attendanceRecord.absences,
+                lates: attendanceRecord.lates,
+              }
+            : undefined,
+        };
+      }
+    );
 
-    // Set the processed students and grade scale into state
     setStudents(studentsWithAttendance);
     setGradeScale(gradeScaleData.gradeScale);
-  }, []); // Empty dependency array means this will run once when the component mounts
+  }, []);
 
   const formatGrade = (grade: number | null): string => {
     if (grade === null) return "N/A";
@@ -107,6 +132,14 @@ const Report: React.FC = () => {
           ? rateAttendance(student.attendance)
           : "No attendance data";
 
+        const courseInfo = courseDescriptions[
+          student.courseName.toLowerCase()
+        ] || {
+          name: student.courseName,
+          emoji: "📚",
+          description: "No description available for this course.",
+        };
+
         return (
           <table key={index} className="report-table">
             <tbody>
@@ -125,6 +158,18 @@ const Report: React.FC = () => {
                 </td>
                 <td>
                   <strong>Semester:</strong> 1
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2}>
+                  <strong>
+                    COURSE: {courseInfo.name} {courseInfo.emoji}
+                  </strong>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2}>
+                  <em>{courseInfo.description}</em>
                 </td>
               </tr>
               <tr>

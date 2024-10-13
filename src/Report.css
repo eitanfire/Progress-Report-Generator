@@ -6,10 +6,6 @@
 }
 
 .logo {
-  position: absolute;
-  top:0rem;
-  left: 0rem;
-  width: 85rem;
   z-index: -1;
 }
 
@@ -56,6 +52,44 @@
   font-weight: bold;
 }
 
+.text-danger {
+  color: red;
+}
+
+.report-container {
+  padding: 20px;
+}
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+.heading {
+  text-align: center;
+  font-size: 24px;
+}
+.subheading {
+  text-align: center;
+  font-size: 18px;
+}
+.report-table {
+  margin: 20px 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+.report-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.attendance-rating-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.attendance-rating-table th, 
+.attendance-rating-table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+}
 .text-danger {
   color: red;
 }

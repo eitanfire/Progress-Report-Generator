@@ -3,22 +3,9 @@ export interface AttendanceRecord {
   lates: number;
 }
 
-export function rateAttendance(attendance: AttendanceRecord): string {
-  const totalSessions = 14; // The total number of class sessions
-  const { absences, lates } = attendance;
-
-  // Combine absences and lates (each 5 lates equals 1 absence equivalent)
-  const lateEquivalents = Math.floor(lates / 5);
-  const totalAbsenceImpact = absences + lateEquivalents;
-
-  // Define the rating thresholds
-  if (totalAbsenceImpact <= 1) {
-    return "Excellent";
-  } else if (totalAbsenceImpact <= 3) {
-    return "Good";
-  } else if (totalAbsenceImpact <= 6) {
-    return "Fair";
-  } else {
-    return "Poor";
-  }
-}
+export const rateAttendance = (attendance: AttendanceRecord): string => {
+  if (attendance.absences < 3 && attendance.lates < 5) return "Excellent";
+  if (attendance.absences < 6 && attendance.lates < 10) return "Good";
+  if (attendance.absences < 9 && attendance.lates < 15) return "Fair";
+  return "Poor";
+};
