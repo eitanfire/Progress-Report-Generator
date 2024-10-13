@@ -13,11 +13,6 @@
 
 .logo {
   position: absolute;
-
-  /* max-width:5rem; */
-  /* max-block-size: 18%; */
-
-  /* background-color: aquamarine; */
   top:0rem;
   left: 0rem;
   width: 85rem;
@@ -32,4 +27,28 @@ padding-top: 10%;  font-size: 1.4rem;
 .subheading {
   font-size: 1.6rem;
   font-weight: bold;
+}
+
+.attendance-rating-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.attendance-rating-table th,
+.attendance-rating-table td {
+  border: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.attendance-rating-table td {
+        border: 1px solid black;
+}
+
+.attendance-rating-table th {
+  background-color: transparent; /* No shading for the header */
+}
+
+.categories {
+background-color: black;
 }

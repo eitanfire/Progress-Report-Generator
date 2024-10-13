@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, Container } from "reactstrap";
 import gradesData from "../grades.json";
 import gradeScaleData from "../utils/gradeScale.json";
 import attendanceData from "../utils/attendance.json";
 import Logo from "../assets/sept-school-logo.png";
 import { calculateCredits } from "../utils/creditCalculator";
 import { rateAttendance, AttendanceRecord } from "../utils/attendanceRating";
+import "../Report.css";
 
 interface Student {
   lastName: string;
@@ -25,6 +25,7 @@ const Report: React.FC = () => {
   const [gradeScale, setGradeScale] = useState<GradeScale[]>([]);
 
   useEffect(() => {
+    // Process students and attendance data
     const processedStudents = gradesData.students.map((student) => ({
       ...student,
       overallGrade: student.overallGrade
@@ -35,11 +36,12 @@ const Report: React.FC = () => {
     const processedAttendance = attendanceData.studentAttendance.map(
       (student) => ({
         name: student.name,
-        absences: student.attendance[6], // Index 6 corresponds to 'A' (Absences)
-        lates: student.attendance[3] + student.attendance[4], // Indices 3 and 4 correspond to 'L' and 'LE' (Lates)
+        absences: student.attendance[6], // Assuming index 6 corresponds to 'A' (Absences)
+        lates: student.attendance[3] + student.attendance[4], // Assuming indices 3 and 4 correspond to 'L' and 'LE' (Lates)
       })
     );
 
+    // Combine attendance data with students
     const studentsWithAttendance = processedStudents.map((student) => {
       const attendanceRecord = processedAttendance.find(
         (record) =>
@@ -48,9 +50,10 @@ const Report: React.FC = () => {
       return { ...student, attendance: attendanceRecord };
     });
 
+    // Set the processed students and grade scale into state
     setStudents(studentsWithAttendance);
     setGradeScale(gradeScaleData.gradeScale);
-  }, []);
+  }, []); // Empty dependency array means this will run once when the component mounts
 
   const formatGrade = (grade: number | null): string => {
     if (grade === null) return "N/A";
@@ -67,31 +70,34 @@ const Report: React.FC = () => {
     return "F"; // Default to F if no other grade matches
   };
 
-  const renderAttendanceRatingBoxes = (rating: string) => {
+  const renderAttendanceRatingTable = (rating: string) => {
     const categories = ["Excellent", "Good", "Fair", "Poor"];
     return (
-      <Row className="attendance-rating-row mb-3">
-        {categories.map((category) => (
-          <Col key={category} className="text-center attendance-box">
-            <strong>{category}</strong>
-            <div className="attendance-box-content">
-              {rating === category ? "X" : ""}
-            </div>
-          </Col>
-        ))}
-      </Row>
+      <table className="attendance-rating-table">
+        <thead>
+          <tr>
+            {categories.map((category) => (
+              <th key={category}>{category}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {categories.map((category) => (
+              <td key={category}>{rating === category ? "X" : ""}</td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
     );
   };
 
   return (
-    <Container fluid>
+    <div className="report-container">
       <img className="logo" src={Logo} alt="Logo" />
-      <Row className="mb-3">
-        <Col>
-          <h1 className="heading">MID-SEMESTER STUDENT EVALUATION</h1>
-          <h2 className="subheading">PROGRESS REPORT</h2>
-        </Col>
-      </Row>
+      <h1 className="heading">MID-SEMESTER STUDENT EVALUATION</h1>
+      <h2 className="subheading">PROGRESS REPORT</h2>
+
       {students.map((student, index) => {
         const credits = student.attendance
           ? calculateCredits(student.attendance)
@@ -102,76 +108,72 @@ const Report: React.FC = () => {
           : "No attendance data";
 
         return (
-          <div key={index} className="report-specifics-container mb-5">
-            <Row className="mb-2">
-              <Col sm="6">
-                <strong>Student:</strong> {student.firstName} {student.lastName}
-              </Col>
-              <Col sm="6">
-                <strong>Date:</strong> {new Date().toLocaleDateString()}
-              </Col>
-            </Row>
-            <Row className="mb-2">
-              <Col sm="6">
-                <strong>Instructor:</strong> Eitan Fire
-              </Col>
-              <Col sm="6">
-                <strong>Semester:</strong> 1
-              </Col>
-            </Row>
-            <Row className="class-attendance-box mb-2">
-              <Col>
-                <strong>Class Attendance:</strong>
-              </Col>
-              <Col className="col-7">
-                {renderAttendanceRatingBoxes(attendanceRating)}
-              </Col>
-              {/* Wider box labeled Class Attendance */}
-            </Row>
-
-            {/* Attendance specifics (Absences and Lates) */}
-            <Row className="mb-2">
-              <Col>
-                <strong>ATTENDANCE:</strong>
-                {student.attendance ? (
-                  <>
-                    <br />
-                    Absences: {student.attendance.absences}
-                    <br />
-                    Lates: {student.attendance.lates}
-                  </>
-                ) : (
-                  <span> No attendance data available</span>
-                )}
-              </Col>
-            </Row>
-
-            <Row className="mb-2">
-              <Col sm="6">
-                <strong>GRADE IN PROGRESS:</strong>{" "}
-                {getLetterGrade(student.overallGrade)}(
-                {formatGrade(student.overallGrade)})
-              </Col>
-              <Col sm="6">
-                <strong>CREDITS POSSIBLE:</strong>
-                <br />
-                {credits}
-                {credits < 4 && (
-                  <div className="text-danger">
-                    Lost credit due to attendance.
-                  </div>
-                )}
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <strong>COMMENTS:</strong>
-              </Col>
-            </Row>
-          </div>
+          <table key={index} className="report-table">
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Student:</strong> {student.firstName}{" "}
+                  {student.lastName}
+                </td>
+                <td>
+                  <strong>Date:</strong> {new Date().toLocaleDateString()}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Instructor:</strong> Eitan Fire
+                </td>
+                <td>
+                  <strong>Semester:</strong> 1
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2}>
+                  <strong>ATTENDANCE:</strong>
+                  {renderAttendanceRatingTable(attendanceRating)}
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2}>
+                  {student.attendance ? (
+                    <>
+                      Absences: {student.attendance.absences}
+                      <br />
+                      Lates: {student.attendance.lates}
+                    </>
+                  ) : (
+                    <span>No attendance data available</span>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>GRADE IN PROGRESS:</strong>{" "}
+                  {getLetterGrade(student.overallGrade)} (
+                  {formatGrade(student.overallGrade)})
+                </td>
+                <td>
+                  <strong>CREDITS POSSIBLE:</strong> {credits}
+                  {credits < 4 && (
+                    <div className="text-danger">
+                      Lost credit due to attendance.
+                    </div>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2}>
+                  <strong>COMMENTS:</strong>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2} style={{ height: "100px" }}></td>
+              </tr>
+            </tbody>
+          </table>
         );
       })}
-    </Container>
+    </div>
   );
 };
 

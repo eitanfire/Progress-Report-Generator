@@ -1,0 +1,61 @@
+.report-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.logo {
+  position: absolute;
+  top:0rem;
+  left: 0rem;
+  width: 85rem;
+  z-index: -1;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subheading {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.report-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  vertical-align: top;
+}
+
+.attendance-rating-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.attendance-rating-table th,
+.attendance-rating-table td {
+  border: 1px solid #000;
+  padding: 5px;
+  text-align: center;
+}
+
+.attendance-rating-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.text-danger {
+  color: red;
+}
