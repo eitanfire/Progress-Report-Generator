@@ -8,6 +8,20 @@ import { rateAttendance, AttendanceRecord } from "../utils/attendanceRating";
 import courseDescriptions from "../utils/courseDescriptions";
 import "../Report.css";
 
+// Constants for attendance indices
+const ABSENCES = attendanceData.attendanceCategories.indexOf("A"); // Index for 'A' (Absences)
+const LATES = attendanceData.attendanceCategories.indexOf("L"); // Index for 'L' (Lates)
+const LE = attendanceData.attendanceCategories.indexOf("LE"); // Index for 'LE' (Late Excused)
+
+// Helper functions to calculate absences and lates
+const getAbsences = (attendance: number[]): number => {
+  return attendance[ABSENCES];
+};
+
+const getLates = (attendance: number[]): number => {
+  return attendance[LATES] + attendance[LE];
+};
+
 interface Student {
   lastName: string;
   firstName: string;
@@ -53,11 +67,8 @@ const Report: React.FC = () => {
     const processedAttendance = attendanceData.studentAttendance.map(
       (student) => ({
         name: student.name,
-        absences:
-          student.attendance[attendanceData.attendanceCategories.indexOf("A")],
-        lates:
-          student.attendance[attendanceData.attendanceCategories.indexOf("L")] +
-          student.attendance[attendanceData.attendanceCategories.indexOf("LE")],
+        absences: getAbsences(student.attendance),
+        lates: getLates(student.attendance),
       })
     );
 
