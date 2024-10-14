@@ -11,7 +11,7 @@ import "../Report.css";
 // Constants for attendance indices
 const ABSENCES = attendanceData.attendanceCategories.indexOf("A"); // Index for 'A' (Absences)
 const LATES = attendanceData.attendanceCategories.indexOf("L"); // Index for 'L' (Lates)
-const LE = attendanceData.attendanceCategories.indexOf("LE"); // Index for 'LE' (Late Excused)
+const LE = attendanceData.attendanceCategories.indexOf("LE"); // Index for 'LE' (Left Early)
 
 // Helper functions to calculate absences and lates
 const getAbsences = (attendance: number[]): number => {
