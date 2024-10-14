@@ -6,6 +6,7 @@ import Logo from "../assets/unnamed.jpg";
 import { calculateCredits } from "../utils/creditCalculator";
 import { rateAttendance, AttendanceRecord } from "../utils/attendanceRating";
 import courseDescriptions from "../utils/courseDescriptions";
+import { TOTAL_SESSIONS, MAX_CREDITS } from "../utils/config";
 import "../Report.css";
 
 // Constants for attendance indices
@@ -49,7 +50,7 @@ const Report: React.FC = () => {
   const [gradeScale, setGradeScale] = useState<GradeScale[]>([]);
 
   // Set the total number of class sessions
-  const totalSessions = 14; // You can adjust this value as needed
+  const totalSessions = TOTAL_SESSIONS;
 
   useEffect(() => {
     // Process students and attendance data
@@ -140,7 +141,7 @@ const Report: React.FC = () => {
       {students.map((student, index) => {
         const credits = student.attendance
           ? calculateCredits(student.attendance)
-          : 4;
+          : MAX_CREDITS;
 
         const attendanceRating = student.attendance
           ? rateAttendance(student.attendance, totalSessions)
