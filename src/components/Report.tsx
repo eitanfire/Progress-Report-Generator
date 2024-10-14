@@ -34,6 +34,9 @@ const Report: React.FC = () => {
   const [students, setStudents] = useState<Student[]>([]);
   const [gradeScale, setGradeScale] = useState<GradeScale[]>([]);
 
+  // Set the total number of class sessions
+  const totalSessions = 14; // You can adjust this value as needed
+
   useEffect(() => {
     // Process students and attendance data
     const processedStudents: Student[] = (
@@ -129,7 +132,7 @@ const Report: React.FC = () => {
           : 4;
 
         const attendanceRating = student.attendance
-          ? rateAttendance(student.attendance)
+          ? rateAttendance(student.attendance, totalSessions)
           : "No attendance data";
 
         const courseInfo = courseDescriptions[
