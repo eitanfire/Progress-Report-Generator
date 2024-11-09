@@ -1,0 +1,136 @@
+{
+  "students": [
+    {
+      "lastName": "Ben",
+      "firstName": "Ben",
+      "email": "ben@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Bre",
+      "firstName": "Bre",
+      "email": "bre@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Jude",
+      "firstName": "Jude",
+      "email": "jude@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Lily",
+      "firstName": "Lily",
+      "email": "lily@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Maddy",
+      "firstName": "Maddy",
+      "email": "maddy@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Sadie",
+      "firstName": "Sadie",
+      "email": "sadie@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Charlie",
+      "firstName": "Charlie",
+      "email": "charlie@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Rio",
+      "firstName": "Rio",
+      "email": "rio@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Adrian",
+      "firstName": "Adrian",
+      "email": "adrian@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Cat",
+      "firstName": "Cat",
+      "email": "cat@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Trevor",
+      "firstName": "Trevor",
+      "email": "trevor@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Graysin",
+      "firstName": "Graysin",
+      "email": "graysin@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Jude",
+      "firstName": "Jude",
+      "email": "jude@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Leo",
+      "firstName": "Leo",
+      "email": "leo@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Nova",
+      "firstName": "Nova",
+      "email": "nova@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Charlotte",
+      "firstName": "Charlotte",
+      "email": "charlotte@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Ethan",
+      "firstName": "Ethan",
+      "email": "ethan@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Emma",
+      "firstName": "Emma",
+      "email": "emma@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Isabella",
+      "firstName": "Isabella",
+      "email": "isabella@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Ava",
+      "firstName": "Ava",
+      "email": "ava@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Alex",
+      "firstName": "Alex",
+      "email": "alex@example.com",
+      "overallGrade": "100%"
+    },
+    {
+      "lastName": "Noah",
+      "firstName": "Noah",
+      "email": "noah@example.com",
+      "overallGrade": "100%"
+    }
+  ]
+}

@@ -1,58 +1,80 @@
 {
-  "students": [
+  "courses": [
     {
-      "lastName": "Anderson",
-      "firstName": "Luke",
-      "email": "lukeanderson@school.edu",
-      "overallGrade": "91.38%"
+      "courseName": "World History",
+      "students": [
+        { "lastName": "Barone", "firstName": "Jude", "overallGrade": "98.24%" },
+        {
+          "lastName": "Fallon",
+          "firstName": "Nova",
+          "overallGrade": "114.44%"
+        },
+        { "lastName": "Ford", "firstName": "Pete", "overallGrade": "88.02%" },
+        { "lastName": "Haller", "firstName": "Andy", "overallGrade": "95.29%" },
+        { "lastName": "Hoffman", "firstName": "Ari", "overallGrade": "85.45%" },
+        {
+          "lastName": "Maybach",
+          "firstName": "Colby",
+          "overallGrade": "99.79%"
+        },
+        { "lastName": "Stein", "firstName": "Trevor", "overallGrade": "92.73%" }
+      ]
     },
     {
-      "lastName": "Young",
-      "firstName": "Brie",
-      "email": "brieyoung@school.edu",
-      "overallGrade": "86.78%"
+      "courseName": "US Government",
+      "students": [
+        { "lastName": "Crist", "firstName": "Ben", "overallGrade": "55.59%" },
+        { "lastName": "Keister", "firstName": "Bre", "overallGrade": "71.71%" },
+        {
+          "lastName": "Maybach",
+          "firstName": "Colby",
+          "overallGrade": "89.57%"
+        },
+        { "lastName": "Vought", "firstName": "Lily", "overallGrade": "99.42%" },
+        {
+          "lastName": "Wissenburg-Crockom",
+          "firstName": "Rayne",
+          "overallGrade": "84.74%"
+        }
+      ]
     },
     {
-      "lastName": "Martinez",
-      "firstName": "Isabella",
-      "email": "isabellamartinez@school.edu",
-      "overallGrade": "91.95%"
+      "courseName": "Technology (co-taught by Eitan and Hunter)",
+      "students": [
+        {
+          "lastName": "Alexander",
+          "firstName": "Cat",
+          "overallGrade": "43.61%"
+        },
+        { "lastName": "Brooks", "firstName": "Leo", "overallGrade": "63.64%" },
+        { "lastName": "Clarke", "firstName": "Rio", "overallGrade": "39.83%" },
+        {
+          "lastName": "Conway Bennett",
+          "firstName": "Adrian",
+          "overallGrade": "53.97%"
+        },
+        { "lastName": "Davis", "firstName": "Sadie", "overallGrade": "39.1%" }
+      ]
     },
     {
-      "lastName": "Chen",
-      "firstName": "Sophie",
-      "email": "sophiechen@school.edu",
-      "overallGrade": "101.15%"
-    },
-    {
-      "lastName": "Thompson",
-      "firstName": "Ethan",
-      "email": "ethanthompson@school.edu",
-      "overallGrade": null
-    },
-    {
-      "lastName": "Patel",
-      "firstName": "Ava",
-      "email": "avapatel@school.edu",
-      "overallGrade": "73.35%"
-    },
-    {
-      "lastName": "Rodriguez",
-      "firstName": "Emma",
-      "email": "emmarodriguez@school.edu",
-      "overallGrade": "91.35%"
-    },
-    {
-      "lastName": "Kim-Johnson",
-      "firstName": "Alex",
-      "email": "alexkimjohnson@school.edu",
-      "overallGrade": "67.52%"
-    },
-    {
-      "lastName": "Walsh",
-      "firstName": "Noah",
-      "email": "noahwalsh@school.edu",
-      "overallGrade": "81.95%"
+      "courseName": "Technology (Eitan)",
+      "students": [
+        {
+          "lastName": "Kerr",
+          "firstName": "Charlie",
+          "overallGrade": "57.14%"
+        },
+        {
+          "lastName": "Wissenburg-Crockom",
+          "firstName": "Rayne",
+          "overallGrade": "0%"
+        },
+        {
+          "lastName": "Peterson",
+          "firstName": "Graysin",
+          "overallGrade": "98.75%"
+        }
+      ]
     }
   ]
 }

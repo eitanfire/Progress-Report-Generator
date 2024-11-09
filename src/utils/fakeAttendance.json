@@ -1,0 +1,34 @@
+{
+  "courseName": "technology",
+  "attendanceCategories": ["P", "PH", "PC", "L", "LE", "NP", "A", "M"],
+  "studentAttendance": [
+    {
+      "name": "Luke",
+      "attendance": [9, 0, 0, 24, 0, 0, 10, 0]
+    },
+    {
+      "name": "Brie",
+      "attendance": [9, 0, 0, 3, 0, 0, 2, 0]
+    },
+    {
+      "name": "Isabella",
+      "attendance": [14, 0, 0, 0, 0, 0, 20, 0]
+    },
+    {
+      "name": "Sophie",
+      "attendance": [4, 0, 0, 7, 0, 0, 3, 0]
+    },
+    {
+      "name": "Ava",
+      "attendance": [10, 0, 0, 2, 0, 0, 2, 0]
+    },
+    {
+      "name": "Noah",
+      "attendance": [10, 0, 0, 3, 0, 0, 1, 0]
+    },
+    {
+      "name": "Ethan",
+      "attendance": [6, 0, 0, 6, 0, 0, 2, 0]
+    }
+  ]
+}

@@ -1,0 +1,523 @@
+{
+    "courses": [
+        {
+            "courseName": "technology",
+            "attendanceCategories": [
+                "P",
+                "PH",
+                "PC",
+                "L",
+                "LE",
+                "NP",
+                "A",
+                "M"
+            ],
+            "studentAttendance": [
+                {
+                    "name": "Adrian",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        2,
+                        0
+                    ]
+                },
+                {
+                    "name": "Cat",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "name": "Sadie",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        2,
+                        0
+                    ]
+                },
+                {
+                    "name": "Rio",
+                    "attendance": [
+                        16,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Leo",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "courseName": "history of music",
+            "attendanceCategories": [
+                "P",
+                "PH",
+                "PC",
+                "L",
+                "LE",
+                "NP",
+                "A",
+                "M"
+            ],
+            "studentAttendance": [
+                {
+                    "name": "Graysin",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "name": "Jude",
+                    "attendance": [
+                        13,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "name": "Leo",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "name": "Maddy",
+                    "attendance": [
+                        13,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        2,
+                        0
+                    ]
+                },
+                {
+                    "name": "Pete",
+                    "attendance": [
+                        13,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "name": "Trevor",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Charlotte",
+                    "attendance": [
+                        4,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "courseName": "geography",
+            "attendanceCategories": [
+                "P",
+                "PH",
+                "PC",
+                "L",
+                "LE",
+                "NP",
+                "A",
+                "M"
+            ],
+            "studentAttendance": [
+                {
+                    "name": "Adrian",
+                    "attendance": [
+                        1,
+                        0,
+                        0,
+                        3,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Bre",
+                    "attendance": [
+                        13,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        2,
+                        0
+                    ]
+                },
+                {
+                    "name": "Cat",
+                    "attendance": [
+                        13,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "name": "Lily",
+                    "attendance": [
+                        15,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Nova",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Rio",
+                    "attendance": [
+                        15,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Sadie",
+                    "attendance": [
+                        12,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        3,
+                        0
+                    ]
+                },
+                {
+                    "name": "Charlotte",
+                    "attendance": [
+                        5,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "courseName": "technology (hunter)",
+            "attendanceCategories": [
+                "P",
+                "PH",
+                "PC",
+                "L",
+                "LE",
+                "NP",
+                "A",
+                "M"
+            ],
+            "studentAttendance": [
+                {
+                    "name": "Ben",
+                    "attendance": [
+                        16,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Bre",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        2,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Jude",
+                    "attendance": [
+                        4,
+                        0,
+                        0,
+                        11,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Lily",
+                    "attendance": [
+                        13,
+                        0,
+                        0,
+                        2,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "name": "Maddy",
+                    "attendance": [
+                        14,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "courseName": "MUSIC",
+            "attendanceCategories": [
+                "P",
+                "PH",
+                "PC",
+                "L",
+                "LE",
+                "NP",
+                "A",
+                "M"
+            ],
+            "studentAttendance": [
+                {
+                    "name": "Adrian",
+                    "attendance": [
+                        11,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        2,
+                        0
+                    ]
+                },
+                {
+                    "name": "Cat",
+                    "attendance": [
+                        12,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "name": "Rio",
+                    "attendance": [
+                        13,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Sadie",
+                    "attendance": [
+                        11,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "name": "Charlie",
+                    "attendance": [
+                        12,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "courseName": "GEOGRAPHY",
+            "attendanceCategories": [
+                "P",
+                "PH",
+                "PC",
+                "L",
+                "LE",
+                "NP",
+                "A",
+                "M"
+            ],
+            "studentAttendance": [
+                {
+                    "name": "Andy",
+                    "attendance": [
+                        11,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Ben",
+                    "attendance": [
+                        11,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "Charlie",
+                    "attendance": [
+                        10,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        2,
+                        0
+                    ]
+                }
+            ]
+        }
+    ]
+}

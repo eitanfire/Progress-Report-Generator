@@ -1,0 +1,58 @@
+{
+  "students": [
+    {
+      "lastName": "Anderson",
+      "firstName": "Luke",
+      "email": "lukeanderson@school.edu",
+      "overallGrade": "91.38%"
+    },
+    {
+      "lastName": "Young",
+      "firstName": "Brie",
+      "email": "brieyoung@school.edu",
+      "overallGrade": "86.78%"
+    },
+    {
+      "lastName": "Martinez",
+      "firstName": "Isabella",
+      "email": "isabellamartinez@school.edu",
+      "overallGrade": "91.95%"
+    },
+    {
+      "lastName": "Chen",
+      "firstName": "Sophie",
+      "email": "sophiechen@school.edu",
+      "overallGrade": "101.15%"
+    },
+    {
+      "lastName": "Thompson",
+      "firstName": "Ethan",
+      "email": "ethanthompson@school.edu",
+      "overallGrade": null
+    },
+    {
+      "lastName": "Patel",
+      "firstName": "Ava",
+      "email": "avapatel@school.edu",
+      "overallGrade": "73.35%"
+    },
+    {
+      "lastName": "Rodriguez",
+      "firstName": "Emma",
+      "email": "emmarodriguez@school.edu",
+      "overallGrade": "91.35%"
+    },
+    {
+      "lastName": "Kim-Johnson",
+      "firstName": "Alex",
+      "email": "alexkimjohnson@school.edu",
+      "overallGrade": "67.52%"
+    },
+    {
+      "lastName": "Walsh",
+      "firstName": "Noah",
+      "email": "noahwalsh@school.edu",
+      "overallGrade": "81.95%"
+    }
+  ]
+}

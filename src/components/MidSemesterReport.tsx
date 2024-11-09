@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import gradesData from "../grades.json";
 import gradeScaleData from "../utils/gradeScale.json";
-import attendanceData from "../utils/attendance.json";
+import attendanceDataJson from "../utils/attendance.json";
+import gradesDataJson from "../grades.json";
 import Logo from "../assets/unnamed.jpg";
 import { calculateCredits } from "../utils/creditCalculator";
 import { rateAttendance, AttendanceRecord } from "../utils/attendanceRating";
@@ -9,18 +9,45 @@ import courseDescriptions from "../utils/courseDescriptions";
 import { TOTAL_SESSIONS, MAX_CREDITS } from "../utils/config";
 import "../Report.css";
 
-// Constants for attendance indices
-const ABSENCES = attendanceData.attendanceCategories.indexOf("A"); // Index for 'A' (Absences)
-const LATES = attendanceData.attendanceCategories.indexOf("L"); // Index for 'L' (Lates)
-const LE = attendanceData.attendanceCategories.indexOf("LE"); // Index for 'LE' (Left Early)
+// Interface to define the structure of attendance data
+interface AttendanceData {
+  courses: {
+    courseName: string;
+    attendanceCategories: string[];
+    studentAttendance: {
+      name: string;
+      attendance: number[];
+    }[];
+  }[];
+}
+
+// Attendance data type
+const attendanceData: AttendanceData = attendanceDataJson;
 
 // Helper functions to calculate absences and lates
-const getAbsences = (attendance: number[]): number => {
-  return attendance[ABSENCES];
+const getAbsences = (
+  attendance: number[],
+  attendanceCategories: string[]
+): number => {
+  const ABSENCES = attendanceCategories.indexOf("A");
+  return attendance[ABSENCES] ?? 0;
 };
 
-const getLates = (attendance: number[]): number => {
-  return attendance[LATES] + attendance[LE];
+const getLates = (
+  attendance: number[],
+  attendanceCategories: string[]
+): number => {
+  const LATES = attendanceCategories.indexOf("L");
+  const LE = attendanceCategories.indexOf("LE");
+  return (attendance[LATES] ?? 0) + (attendance[LE] ?? 0);
+};
+
+// Helper function to split full names into first and last names
+const splitName = (fullName: string): [string, string] => {
+  const parts = fullName.split(" ");
+  const firstName = parts[0];
+  const lastName = parts.slice(1).join(" ");
+  return [firstName, lastName];
 };
 
 interface Student {
@@ -32,14 +59,6 @@ interface Student {
   courseName: string;
 }
 
-interface RawStudent {
-  lastName: string;
-  firstName: string;
-  email: string;
-  overallGrade: string | null;
-  courseName?: string;
-}
-
 interface GradeScale {
   letter: string;
   minPercentage: number;
@@ -49,51 +68,61 @@ const Report: React.FC = () => {
   const [students, setStudents] = useState<Student[]>([]);
   const [gradeScale, setGradeScale] = useState<GradeScale[]>([]);
 
-  // Set the total number of class sessions
   const totalSessions = TOTAL_SESSIONS;
 
   useEffect(() => {
-    // Process students and attendance data
-    const processedStudents: Student[] = (
-      gradesData.students as RawStudent[]
-    ).map((student) => ({
-      ...student,
-      overallGrade: student.overallGrade
-        ? parseFloat(student.overallGrade)
-        : null,
-      courseName:
-        student.courseName || attendanceData.courseName || "Unknown Course",
-    }));
+    const studentsWithAttendance: Student[] = [];
 
-    const processedAttendance = attendanceData.studentAttendance.map(
-      (student) => ({
-        name: student.name,
-        absences: getAbsences(student.attendance),
-        lates: getLates(student.attendance),
-      })
-    );
+    // Combine attendance and grades data
+    attendanceData.courses.forEach((course) => {
+      course.studentAttendance.forEach((attendanceStudent) => {
+        const [firstName, lastName] = splitName(attendanceStudent.name);
 
-    const studentsWithAttendance: Student[] = processedStudents.map(
-      (student) => {
-        const attendanceRecord = processedAttendance.find(
-          (record) =>
-            record.name.toLowerCase() === student.firstName.toLowerCase()
-        );
-        return {
-          ...student,
-          attendance: attendanceRecord
-            ? {
-                absences: attendanceRecord.absences,
-                lates: attendanceRecord.lates,
-              }
-            : undefined,
-        };
-      }
-    );
+        // Find the corresponding grade data
+        const gradeInfo = getGradeInfo(course.courseName, firstName, lastName);
+        const overallGrade = gradeInfo
+          ? parseFloat(gradeInfo.overallGrade)
+          : null;
+
+        studentsWithAttendance.push({
+          lastName,
+          firstName,
+          email: "unknown@example.com",
+          overallGrade,
+          attendance: {
+            absences: getAbsences(
+              attendanceStudent.attendance,
+              course.attendanceCategories
+            ),
+            lates: getLates(
+              attendanceStudent.attendance,
+              course.attendanceCategories
+            ),
+          },
+          courseName: course.courseName,
+        });
+      });
+    });
 
     setStudents(studentsWithAttendance);
-    setGradeScale(gradeScaleData.gradeScale);
+    setGradeScale(gradeScaleData?.gradeScale ?? []);
   }, []);
+
+  const getGradeInfo = (
+    courseName: string,
+    firstName: string,
+    lastName: string
+  ) => {
+    const gradesData = gradesDataJson.courses.find(
+      (course) => course.courseName === courseName
+    );
+    return (
+      gradesData?.students.find(
+        (student) =>
+          student.firstName === firstName && student.lastName === lastName
+      ) || null
+    );
+  };
 
   const formatGrade = (grade: number | null): string => {
     if (grade === null) return "N/A";
@@ -107,7 +136,7 @@ const Report: React.FC = () => {
         return letter;
       }
     }
-    return "F"; // Default to F if no other grade matches
+    return "F";
   };
 
   const renderAttendanceRatingTable = (rating: string) => {
@@ -147,10 +176,10 @@ const Report: React.FC = () => {
           ? rateAttendance(student.attendance, totalSessions)
           : "No attendance data";
 
-        const courseInfo = courseDescriptions[
+        const courseInfo = courseDescriptions?.[
           student.courseName.toLowerCase()
         ] || {
-          name: student.courseName,
+          name: student.courseName || "Unknown Course",
           emoji: "📚",
           description: "No description available for this course.",
         };
@@ -197,9 +226,9 @@ const Report: React.FC = () => {
                 <td colSpan={2}>
                   {student.attendance ? (
                     <>
-                      Absences: {student.attendance.absences}
+                      Absences: {student.attendance?.absences || 0}
                       <br />
-                      Lates: {student.attendance.lates}
+                      Lates: {student.attendance?.lates || 0}
                     </>
                   ) : (
                     <span>No attendance data available</span>
@@ -209,8 +238,10 @@ const Report: React.FC = () => {
               <tr>
                 <td>
                   <strong>GRADE IN PROGRESS:</strong>{" "}
-                  {getLetterGrade(student.overallGrade)} (
-                  {formatGrade(student.overallGrade)})
+                  {student.overallGrade !== null
+                    ? getLetterGrade(student.overallGrade) +
+                      ` (${formatGrade(student.overallGrade)})`
+                    : "N/A"}
                 </td>
                 <td>
                   <strong>CREDITS POSSIBLE:</strong> {credits}

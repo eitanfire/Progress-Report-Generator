@@ -1,34 +1,108 @@
 {
-  "courseName": "Technology",
-  "attendanceCategories": ["P", "PH", "PC", "L", "LE", "NP", "A", "M"],
-  "studentAttendance": [
+  "courses": [
     {
-      "name": "Luke",
-      "attendance": [9, 0, 0, 24, 0, 0, 10, 0]
+      "courseName": "World History",
+      "attendanceCategories": ["P", "PH", "PC", "L", "LE", "NP", "A", "M"],
+      "studentAttendance": [
+        {
+          "name": "Andy",
+          "attendance": [10, 0, 0, 5, 0, 0, 1, 0]
+        },
+        {
+          "name": "Ari",
+          "attendance": [11, 0, 0, 3, 0, 0, 2, 0]
+        },
+        {
+          "name": "Colby",
+          "attendance": [15, 0, 0, 0, 0, 0, 1, 0]
+        },
+        {
+          "name": "Jude",
+          "attendance": [5, 0, 0, 8, 0, 0, 3, 0]
+        },
+        {
+          "name": "Nova",
+          "attendance": [12, 0, 0, 2, 0, 0, 2, 0]
+        },
+        {
+          "name": "Pete",
+          "attendance": [11, 0, 0, 3, 0, 0, 2, 0]
+        },
+        {
+          "name": "Trevor",
+          "attendance": [7, 0, 0, 7, 0, 0, 2, 0]
+        }
+      ]
     },
     {
-      "name": "Brie",
-      "attendance": [9, 0, 0, 3, 0, 0, 2, 0]
+      "courseName": "US Government",
+      "attendanceCategories": ["P", "PH", "PC", "L", "LE", "NP", "A", "M"],
+      "studentAttendance": [
+        {
+          "name": "Ben",
+          "attendance": [11, 0, 0, 4, 0, 0, 1, 0]
+        },
+        {
+          "name": "Bre",
+          "attendance": [13, 0, 0, 2, 0, 0, 1, 0]
+        },
+        {
+          "name": "Colby",
+          "attendance": [15, 0, 0, 1, 0, 0, 0, 0]
+        },
+        {
+          "name": "Lily",
+          "attendance": [13, 0, 0, 2, 1, 0, 0, 0]
+        },
+        {
+          "name": "Rayne",
+          "attendance": [7, 0, 0, 1, 0, 0, 8, 0]
+        }
+      ]
     },
     {
-      "name": "Isabella",
-      "attendance": [14, 0, 0, 0, 0, 0, 20, 0]
+      "courseName": "Technology (Eitan)",
+      "attendanceCategories": ["P", "PH", "PC", "L", "LE", "NP", "A", "M"],
+      "studentAttendance": [
+        {
+          "name": "Charlie",
+          "attendance": [11, 0, 0, 0, 0, 0, 4, 0]
+        },
+        {
+          "name": "Graysin",
+          "attendance": [13, 0, 0, 0, 1, 0, 1, 0]
+        },
+        {
+          "name": "Rayne",
+          "attendance": [9, 0, 0, 0, 0, 0, 6, 0]
+        }
+      ]
     },
     {
-      "name": "Sophie",
-      "attendance": [4, 0, 0, 7, 0, 0, 3, 0]
-    },
-    {
-      "name": "Ava",
-      "attendance": [10, 0, 0, 2, 0, 0, 2, 0]
-    },
-    {
-      "name": "Noah",
-      "attendance": [10, 0, 0, 3, 0, 0, 1, 0]
-    },
-    {
-      "name": "Ethan",
-      "attendance": [6, 0, 0, 6, 0, 0, 2, 0]
+      "courseName": "Technology (co-taught by Eitan and Hunter)",
+      "attendanceCategories": ["P", "PH", "PC", "L", "LE", "NP", "A", "M"],
+      "studentAttendance": [
+        {
+          "name": "Ben",
+          "attendance": [16, 0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+          "name": "Bre",
+          "attendance": [14, 0, 0, 2, 0, 0, 0, 0]
+        },
+        {
+          "name": "Jude",
+          "attendance": [4, 0, 0, 11, 0, 0, 0, 0]
+        },
+        {
+          "name": "Lily",
+          "attendance": [13, 0, 0, 2, 0, 0, 1, 0]
+        },
+        {
+          "name": "Maddy",
+          "attendance": [14, 0, 0, 1, 0, 0, 1, 0]
+        }
+      ]
     }
   ]
 }
